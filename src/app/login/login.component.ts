@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {LoginService} from './login.service';
 import {User} from '../models/user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,24 +12,50 @@ import {User} from '../models/user.model';
 export class LoginComponent {
   public user: User;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private router: Router) {
     this.user = new User();
   }
 
   validateLogin() {
-console.log("username" ,this.user.username);
-console.log("password", this.user.password);
-    if(this.user.username && this.user.password) {
-      console.log('dentro 2');
-      this.loginService.validateLogin(this.user).subscribe(result => {
-        console.log('result is ', result);
-      }, error => {
-        console.log('error is ', error);
-      });
+
+    if (this.user.username && this.user.password) {
+
+      this.loginService.validateLogin(this.user).subscribe(
+        result => {
+          // Handle result
+          console.log('logged');
+          console.log(result);
+          this.loginService.setToken(result);
+          console.log('token', this.loginService.getToken());
+
+          // localStorage.setItem('token', result);
+        },
+        error => {
+
+          switch ( error.status ) {
+            case '404':
+              alert('Error!Wrong Email or password');
+              break;
+            default:
+              alert('Login Error!');
+              break;
+          }
+        },
+        () => {
+          // 'onCompleted' callback.
+
+          // No errors, route to new page h
+          this.router.navigateByUrl('/dashboard');
+          console.log('ok');
+        }
+      );
     } else {
       alert('enter user name and password');
     }
   }
+
+
+
 
 }
 
