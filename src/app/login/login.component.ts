@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class LoginComponent {
   public user: User;
 
+
   constructor(private loginService: LoginService, private router: Router) {
     this.user = new User();
   }
@@ -24,11 +25,10 @@ export class LoginComponent {
         result => {
           // Handle result
           console.log('logged');
-          console.log(result);
           this.loginService.setToken(result);
-          console.log('token', this.loginService.getToken());
+          this.loginService.isLoggedIn$ = this.loginService.isLogged();
+          this.router.navigate(['/dashboard']);
 
-          // localStorage.setItem('token', result);
         },
         error => {
 
@@ -45,8 +45,8 @@ export class LoginComponent {
           // 'onCompleted' callback.
 
           // No errors, route to new page h
-          this.router.navigateByUrl('/dashboard');
-          console.log('ok');
+          // this.router.navigateByUrl('/dashboard');
+
         }
       );
     } else {
