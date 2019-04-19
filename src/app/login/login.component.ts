@@ -14,6 +14,9 @@ export class LoginComponent {
 
 
   constructor(private loginService: LoginService, private router: Router) {
+    if ( this.loginService.isLogged() ) {
+      this.router.navigate(['dashboard']);
+    }
     this.user = new User();
   }
 
