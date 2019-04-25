@@ -26,7 +26,8 @@ export class LoginService {
   }
 
    isLogged() {
-    return localStorage.getItem(TOKEN) != null;
+
+      return localStorage.getItem(TOKEN) != null;
   }
 
   getToken() {
@@ -39,6 +40,7 @@ export class LoginService {
     this.isLoggedIn$ = this.isLogged();
     this.router.navigate(['']);
   }
+
 }
 
 

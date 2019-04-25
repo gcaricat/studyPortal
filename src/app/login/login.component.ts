@@ -2,18 +2,20 @@ import { Component } from '@angular/core';
 import {LoginService} from './login.service';
 import {User} from '../models/user.model';
 import {Router} from '@angular/router';
+import {ApiService} from '../api.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [LoginService]
+  providers: [LoginService, ApiService]
 })
 export class LoginComponent {
   public user: User;
 
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router, private apiService: ApiService) {
     if ( this.loginService.isLogged() ) {
       this.router.navigate(['dashboard']);
     }
@@ -23,13 +25,11 @@ export class LoginComponent {
   validateLogin() {
 
     if (this.user.username && this.user.password) {
-
       this.loginService.validateLogin(this.user).subscribe(
         result => {
           // Handle result
           console.log('logged');
-          this.loginService.setToken(result);
-          this.loginService.isLoggedIn$ = this.loginService.isLogged();
+          this.loginService.setToken(result); this.loginService.isLoggedIn$ = this.loginService.isLogged();
           this.router.navigate(['/dashboard']);
 
         },
@@ -56,7 +56,6 @@ export class LoginComponent {
       alert('enter user name and password');
     }
   }
-
 
 
 
