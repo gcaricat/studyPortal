@@ -1,0 +1,25 @@
+<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded">
+  <i class="fa fa-tags mr-2"></i>
+  <div class="lh-100">
+    <h6 class="mb-0 text-white lh-100">Last Posts</h6>
+  </div>
+</div>
+<div class="my-3 p-3 bg-white rounded box-shadow">
+  <div class="col-md-12 col-xs-12 border-bottom border-gray pb-2 mb-3 ">
+    <a class="btn btn-lg btn-primary btn-block" href="javascript:void(0)">Add Post</a>
+  </div>
+
+  <div class="col-md-12 col-xs-12" *ngFor="let item of listPosts" >
+    <div class="media text-muted pt-3" *ngIf="( item.authId ) ">
+      <div class="media-body pb-3 mb-0 border-bottom border-gray">
+        <h5>{{ item.title}} </h5>
+        <p class="pb-3 mb-0 small lh-125">
+          <strong class="d-block text-gray-dark"><i class="fa fa-user"></i> {{item.authId}}</strong>
+         {{item.content}}
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

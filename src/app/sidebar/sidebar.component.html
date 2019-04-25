@@ -1,0 +1,19 @@
+<div class="profile-sidebar">
+  <figure>
+    <img src="assets/img/no-image.png" class="rounded-circle img-thumbnail">
+  </figure>
+  <div class="profile-title text-center">
+    <h5>
+      <i [ngClass]="this.user.getStatus() == 'active' ? 'text-success' : 'text-danger'" class="fa fa-check-circle-o"></i>
+      {{this.user.getUsername()}}
+    </h5>
+    <p><small>Role: {{this.user.getRole()}}</small></p>
+    <p><small>Registation {{this.user.getRegisterDate()}}</small></p>
+  </div>
+  <div class="profile-menu">
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link active " href=""><i class="fa fa-home"></i> Profile</a></li>
+      <li class="nav-item"><a href="" class="nav-link"> <i class="fa fa-question"></i> Help</a></li>
+    </ul>
+  </div>
+</div>
