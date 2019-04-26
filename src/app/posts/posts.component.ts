@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import {Posts} from '../models/posts.model';
-import {post} from "selenium-webdriver/http";
-import {error} from "util";
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
   /**

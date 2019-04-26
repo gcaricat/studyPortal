@@ -40,6 +40,13 @@ export class ApiService {
     return this.http.get<Posts[]>(url);
   }
 
+  addPosts(posts): Observable<Posts> {
+    return this.http.post<Posts>(apiUrl, posts, httpOptions).pipe(
+        tap((posts: Posts) => console.log(`added posts w/ id=${posts.authId}`)),
+        catchError('error insert post')
+    );
+  }
+
   /**
    * Get username throught user userId
    *

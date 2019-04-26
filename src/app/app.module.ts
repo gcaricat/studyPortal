@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostsAddComponent } from './posts-add/posts-add.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PostsComponent } from './posts/posts.component';
     FooterComponent,
     SidebarComponent,
     PostsComponent,
+    PostsAddComponent,
   ],
   imports: [
     BrowserModule,
