@@ -8,16 +8,17 @@ import {Posts} from '../models/posts.model';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-
-
-
-    public listPosts: Posts[] = [];
-  // public listPosts: Posts[];
+  /**
+   * Array that contain all posts
+   */
+  public listPosts: Posts[] = [];
 
   constructor(private apiService: ApiService) {
-
   }
 
+  /**
+   * Call the function getPosts to get all showed posts
+   */
   ngOnInit() {
     this.apiService.getPosts().subscribe( (postsData: Posts[]) => {
       console.log(postsData);
@@ -27,6 +28,10 @@ export class PostsComponent implements OnInit {
     this.apiService.getUser().subscribe()
   }
 
+  /**
+   * Get author name throught posts userId
+   * @param userId
+   */
   getAuthName(userId){
     console.log("userid ", userId);
     if( userId != "undefined" && userId != "" ) {

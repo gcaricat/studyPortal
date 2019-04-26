@@ -4,6 +4,9 @@ import { LoginComponent } from './login/login.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGuardService} from './guards/auth-guard.service';
 
+/**
+ * Obj const used to routing throught the application pages
+ */
 export const AppRoutes: Routes = [
   {
     path: '',

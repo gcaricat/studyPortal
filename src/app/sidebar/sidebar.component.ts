@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../models/user.model';
 import {ApiService} from '../api.service';
 
+/**
+ * Used to manage the sidebar
+ */
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -12,6 +16,10 @@ export class SidebarComponent implements OnInit {
 
   public user: User;
 
+    /**
+     * Get the user information via api and initialize user, instance of class User
+     * @param apiService
+     */
   constructor(private apiService: ApiService) {
     this.user = new User();
 

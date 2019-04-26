@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login/login.service';
 
-
+/**
+ * Component used to control the header
+ */
 
 @Component({
   selector: 'app-header',
@@ -17,6 +19,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+    /**
+     * Function that activate the logout after the click event of the logout button
+     */
    onLogout() {
     this.loginService.logout();
   }
