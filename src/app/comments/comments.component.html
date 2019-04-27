@@ -1,0 +1,11 @@
+<div class="col-md-12 col-xs-12 ml-3 border-left border-primary" *ngFor="let item of listComments" >
+  <div class="media text-muted pt-3" *ngIf="( item.authId )">
+    <div class="media-body pb-3 mb-0 border-bottom border-gray">
+      <strong class="inline-block text-gray-dark"><i class="fa fa-user"></i> {{item.authName}} </strong> -
+      <small class="mb-2 inline-block"><i class="fa fa-calendar"></i> {{item.date}} </small>
+      <p class="mb-2 mt-2 ">
+        {{item.content}}
+      </p>
+    </div>
+  </div>
+</div>

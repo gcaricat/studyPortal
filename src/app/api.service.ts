@@ -6,9 +6,12 @@ import {LoginService} from './login/login.service';
 import {Observable, of} from 'rxjs';
 import {User} from './models/user.model';
 import {Posts} from './models/posts.model';
-const httpOptions =  {
-  headers: new HttpHeaders({'Content-type': 'application/json'})
+import {Comments} from "./models/comments.model";
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ),
 };
+
 
 /**
  * Constant that contain the base url of the api
@@ -39,18 +42,30 @@ export class ApiService {
     return this.http.get<Posts[]>(url);
   }
 
+  getCommentsFromPost(postId): Observable<Comments[]>{
+    const url = `${apiUrl}/comments/${postId}`;
+    return this.http.get<Comments[]>(url);
+  }
+
+
   addPosts(posts): Observable<Posts>{
     const url =   `${apiUrl}post/new`;
-    return this.http.post<Posts>(url, posts);
+    const header = {
+      headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
+    };
+
+    return this.http.post<Posts>(url, posts, header );
   }
-  /*
-  addPosts(posts): Observable<Posts> {
-    return this.http.post<Posts>(apiUrl, posts, httpOptions).pipe(
-        tap((posts: Posts) => console.log(`added posts w/ id=${posts.authId}`)),
-      catchError(_ => of('Error! no more requests!!!'))
-    );
+
+  addComments(comments): Observable<Comments> {
+    const url =   `${apiUrl}comment/new`;
+    const header = {
+      headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
+    };
+
+    return this.http.post<Comments>(url, comments, header );
   }
-*/
+
   /**
    * Get username throught user userId
    *

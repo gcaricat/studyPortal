@@ -32,8 +32,6 @@ export class DashboardComponent implements OnInit {
     if ( !this.loginService.isLogged() ) {
       this.router.navigate(['login']);
     }
-
-
   }
 
 }

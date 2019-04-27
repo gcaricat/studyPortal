@@ -11,7 +11,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostsComponent } from './posts/posts.component';
-import { PostsAddComponent } from './posts-add/posts-add.component';
+import {PostsAddComponent} from './posts-add/posts-add.component';
+import { CommentsComponent } from './comments/comments.component';
+import { CommentsAddComponent } from './comments-add/comments-add.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { PostsAddComponent } from './posts-add/posts-add.component';
     SidebarComponent,
     PostsComponent,
     PostsAddComponent,
+    CommentsComponent,
+    CommentsAddComponent
   ],
   imports: [
     BrowserModule,

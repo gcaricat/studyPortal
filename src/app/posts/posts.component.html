@@ -6,22 +6,27 @@
 </div>
 <div class="my-3 p-3 bg-white rounded box-shadow">
   <div class="col-md-12 col-xs-12 border-bottom border-gray pb-2 mb-3 ">
-    <a class="btn btn-lg btn-primary btn-block" href="javascript:void(0)">Add Post</a>
+    <a class="btn btn-lg btn-primary btn-block" href="javascript:void(0)" (click)="checkBtnVisible();">Add Post</a>
   </div>
-  <app-posts-add></app-posts-add>
+  <app-posts-add [isButtonVisible]="isButtonVisible" *ngIf="isButtonVisible" ></app-posts-add>
 
   <div class="col-md-12 col-xs-12" *ngFor="let item of listPosts" >
-    <div class="media text-muted pt-3" *ngIf="( item.authId ) ">
-      <div class="media-body pb-3 mb-0 border-bottom border-gray">
-        <h5>{{ item.title}}  </h5>
-        <strong class="inline-block text-gray-dark"><i class="fa fa-user"></i> {{item.authName}}</strong> -
-        <small class="mb-2 inline-block"><i class="fa fa-calendar"></i> {{item.date}}</small>
-        <p class="pb-3 mb-0 small lh-125">
-         {{item.content}}
-        </p>
-
+    <div class="row" *ngIf="( item.authId ) ">
+      <div class="col-md-12 col-xs-12 border-bottom border-gray mb-3">
+        <div class="media text-muted pt-3">
+          <div class="media-body pb-3 mb-0">
+            <h5>{{ item.title}}  </h5>
+            <strong class="inline-block text-gray-dark"><i class="fa fa-user"></i> {{item.authName}}</strong> -
+            <small class="mb-2 inline-block"><i class="fa fa-calendar"></i> {{item.date}}</small>
+            <p class="mb-2 mt-2 ">
+             {{item.content}}
+            </p>
+          </div>
+        </div>
       </div>
 
+      <app-comments [idPost]="item._id"></app-comments>
+      <app-comments-add class="col-md-12 col-xs-12" [idPost]="item._id"></app-comments-add>
     </div>
   </div>
 

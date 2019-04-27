@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ApiService} from '../api.service';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {SidebarComponent} from "../sidebar/sidebar.component";
-import {Posts} from "../models/posts.model";
-import {PostsComponent} from "../posts/posts.component";
+import {SidebarComponent} from '../sidebar/sidebar.component';
+import {PostsComponent} from '../posts/posts.component';
 
 @Component({
   selector: 'app-posts-add',
@@ -14,69 +13,64 @@ import {PostsComponent} from "../posts/posts.component";
 })
 export class PostsAddComponent implements OnInit {
 
-  postForm: FormGroup;
-  authId:String;
-  title:String='';
-  content:String='';
-  submitted = false;
+  title: String = '';
+  content: String = '';
 
-  constructor(private router: Router, private apiService: ApiService, private formBuilder: FormBuilder, public sideBar: SidebarComponent, public postComponent: PostsComponent) { }
+  @Input() isButtonVisible: boolean;
 
-
-  /*
-  onFormSubmit(form: NgForm ) {
-    this.isLoadingResult = true;
-
-    this.apiService.addPosts(form).subscribe(res =>{
-      this.router.navigate(['posts']);
-    },
-        error1 => {
-          console.log("error", error1);
-          this.isLoadingResult = false;
-        });
-
-  }
-  */
+  constructor(private router: Router, private apiService: ApiService, public sideBar: SidebarComponent, public postComponent: PostsComponent) { }
 
   ngOnInit() {
-
-    console.log("user posts", this.sideBar.user._id);
-    /*
-    this.postForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      content: ['', Validators.required],
-    });
-
-     */
   }
 
-  onFormSubmit(f: NgForm){
-    console.log("user posts", this.sideBar.user._id);
+  onFormSubmit(f: NgForm) {
+    var error = 0;
+    const arrError = [];
+    if ( f.value.title === '' ) {
+      error = 1;
+      arrError.push('Title');
+    }
 
-    const arrPost: Object = [
-      {authId: this.sideBar.user._id,
-        title: f.value.title,
-        content: f.value.content
-      },
-    ];
+    if ( f.value.content === '') {
+      error = 1;
+      arrError.push('Content');
+    }
 
-    console.log( JSON.parse( JSON.stringify(arrPost[0]) ) );
+    if ( !error ) {
+      const arrPost: object = [
+        {"authId": this.sideBar.user._id, "title": f.value.title,"content": f.value.content}
+      ];
 
-    this.apiService.addPosts( JSON.parse( JSON.stringify(arrPost[0]) ) ).subscribe(res =>{
-        this.router.navigate(['dashboard']);
-      },
-      error1 => {
-        console.log("error", error1);
-       //  this.isLoadingResult = false;
-      });
+      this.apiService.addPosts( JSON.parse( JSON.stringify(arrPost[0]) ) ).subscribe(res =>{
+            this.postComponent.ngOnInit();
 
+          },
+          error1 => {
+             console.log('errore', error1);
 
+            if (error1.status === 201) {
 
-
-
-    // JSON.stringify(f.value))
-
+              f.reset();
+              this.sleep(4000);
+              this.postComponent.ngOnInit();
+              location.reload();
+              this.postComponent.rerender;
+            } else {
+              console.log("critical error response post-add");
+            }
+          });
+    } else {
+      alert('Error insert a value into'+arrError.join(","))
+    }
   }
 
 
+  sleep(milliseconds) {
+    const start = new Date().getTime();
+    for (let i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds) {
+        break;
+      }
+    }
+  }
 }
