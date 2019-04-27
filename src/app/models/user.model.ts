@@ -2,6 +2,7 @@
  * User class
  */
 export class User {
+  public _id;
   public username;
   public password;
   public token;
@@ -17,6 +18,10 @@ export class User {
     this.password = '';
   }
 
+
+  setId(id){
+    this._id = id;
+  }
   /**
    * Set token
    * @param token
@@ -50,6 +55,8 @@ export class User {
    * @param username
    */
   setUsername(username) {this.username = username; }
+
+  getUserId(){return this._id;}
 
   /**
    * Get username

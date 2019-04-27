@@ -13,11 +13,13 @@
   <div class="col-md-12 col-xs-12" *ngFor="let item of listPosts" >
     <div class="media text-muted pt-3" *ngIf="( item.authId ) ">
       <div class="media-body pb-3 mb-0 border-bottom border-gray">
-        <h5>{{ item.title}} </h5>
+        <h5>{{ item.title}}  </h5>
+        <strong class="inline-block text-gray-dark"><i class="fa fa-user"></i> {{item.authName}}</strong> -
+        <small class="mb-2 inline-block"><i class="fa fa-calendar"></i> {{item.date}}</small>
         <p class="pb-3 mb-0 small lh-125">
-          <strong class="d-block text-gray-dark"><i class="fa fa-user"></i> {{item.authName}}</strong>
          {{item.content}}
         </p>
+
       </div>
 
     </div>

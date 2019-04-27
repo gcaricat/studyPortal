@@ -30,14 +30,27 @@ export class PostsComponent implements OnInit {
     });
     */
     this.apiService.getPosts().subscribe( (postsData: Posts[]) => {
-      console.log(postsData);
       for(let item of postsData){
+
+        const current_date = item.date;
+
+        var date =  new Date(+(current_date.match(/\d+/)[0]));
+
+        var formattedDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+        var hours = (date.getHours() < 10) ? "0" + date.getHours() : date.getHours();
+        var minutes = (date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes();
+        var formattedTime = hours + ":" + minutes;
+
+        const sendDate = formattedDate+" "+formattedTime;
+
+
+        //this.user.setDate(formattedDate+" "+formattedTime);
 
         if ( item.authId ) {
 
           this.apiService.getSingleAuthor(item.authId).subscribe( res =>{
             this.authName = res.username;
-            const singlePost = new Posts(item.publish, item.priority, item.authId, this.authName, item.content, item.title);
+            const singlePost = new Posts(item.publish, item.priority, item.authId, this.authName, item.content, item.title, sendDate);
             this.listPosts.push(singlePost);
           });
         }

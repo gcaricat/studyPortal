@@ -1,0 +1,15 @@
+<div class="col-md-12 col-xs-12 border border-gray pb-2 mb-3 p-5">
+  <form #f="ngForm" (ngSubmit)="onFormSubmit(f)" novalidate>
+    <div class="col-md- 12 col-xs-12 mb-3">
+      <label for="inputTitle" class="sr-only">Title</label>
+      <input name="title" ngModel required #title="ngModel" class="form-control"  id="inputTitle" required placeholder="Insert a title">
+    </div>
+    <div class="col-md-12  col-xs-12 mb-3">
+      <label for="inputContent" class="sr-only">Title</label>
+      <textarea ngModel required #content="ngModel" name="content" class="form-control" id="inputContent" required placeholder="Insert a Content"></textarea>
+    </div>
+    <div class="col-md-12 col-xs-12">
+      <button type="submit" >Save</button>
+    </div>
+  </form>
+</div>

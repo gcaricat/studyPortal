@@ -32,6 +32,7 @@ export class SidebarComponent implements OnInit {
           var hours = (date.getHours() < 10) ? "0" + date.getHours() : date.getHours();
           var minutes = (date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes();
           var formattedTime = hours + ":" + minutes;
+          this.user.setId(res._id);
           this.user.setDate(formattedDate+" "+formattedTime);
           this.user.setStatus(res.status );
           this.user.setRole(res.role);

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 // import {Observable, ObservableInput} from 'rxjs';
 // import {catchError, tap, map} from 'rxjs/operators';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {LoginService} from './login/login.service';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {User} from './models/user.model';
 import {Posts} from './models/posts.model';
-
 const httpOptions =  {
   headers: new HttpHeaders({'Content-type': 'application/json'})
 };
@@ -40,13 +39,18 @@ export class ApiService {
     return this.http.get<Posts[]>(url);
   }
 
+  addPosts(posts): Observable<Posts>{
+    const url =   `${apiUrl}post/new`;
+    return this.http.post<Posts>(url, posts);
+  }
+  /*
   addPosts(posts): Observable<Posts> {
     return this.http.post<Posts>(apiUrl, posts, httpOptions).pipe(
         tap((posts: Posts) => console.log(`added posts w/ id=${posts.authId}`)),
-        catchError('error insert post')
+      catchError(_ => of('Error! no more requests!!!'))
     );
   }
-
+*/
   /**
    * Get username throught user userId
    *
