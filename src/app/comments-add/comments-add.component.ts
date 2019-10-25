@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {Router} from '@angular/router';
 import {ApiService} from '../api.service';
@@ -13,7 +13,7 @@ import {CommentsComponent} from '../comments/comments.component';
 })
 export class CommentsAddComponent implements OnInit {
 
-  content:String='';
+  content: String = '';
 
   /**
    * Get the idPost from the component post component throught the decorator
