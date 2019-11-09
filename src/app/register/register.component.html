@@ -1,0 +1,30 @@
+<div class="row mt-5">
+  <div class="col-md-6">
+    <h3>Connect with your friends and share your knowledge!</h3>
+    <figure class="border-right border-primary">
+      <img class="img-fluid" src="../../assets/img/word_cloud.jpeg" />
+    </figure>
+  </div>
+  <div class="col-md-6">
+    <h3>Sign up now!</h3>
+    <p>Study Portal is the first social platform where we share knowledge on all subjects of study. What are you waiting for?</p>
+    <form #f="ngForm" ngForm (ngSubmit)="onFormSubmitRegister(f)">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <label for="inputEmail" class="sr-only">Email</label>
+          <input name="email" ngModel required #title="ngModel"  type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+        </div>
+        <div class="col-md-6 col-12">
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input name="password" ngModel required #title="ngModel"   type="password" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
+        </div>
+        <div class="col-md-12 col-12 mt-4">
+          <p class="pb-3">
+            By clicking Sign Up, you agree to our <a href="javascript:void(0)">Terms and conditions</a>
+          </p>
+          <button class=" col-3 btn btn-primary btn-lg btn-block" type="submit">Sign up</button>-
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
