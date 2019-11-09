@@ -14,6 +14,9 @@ import { PostsComponent } from './posts/posts.component';
 import {PostsAddComponent} from './posts-add/posts-add.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentsAddComponent } from './comments-add/comments-add.component';
+import { RegisterComponent } from './register/register.component';
+import {EmbedVideo} from "ngx-embed-video/dist";
+import { UserAddComponent } from './user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { CommentsAddComponent } from './comments-add/comments-add.component';
     PostsComponent,
     PostsAddComponent,
     CommentsComponent,
-    CommentsAddComponent
+    CommentsAddComponent,
+    RegisterComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,7 @@ import { CommentsAddComponent } from './comments-add/comments-add.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    EmbedVideo.forRoot()
   ],
   providers: [],
   bootstrap: [RootComponent]

@@ -29,7 +29,7 @@ export class LoginService {
    * @param user
    */
   validateLogin(user: User) {
-    return this.http.post('https://sheltered-plains-85717.herokuapp.com/api/session', {
+    return this.http.post('https://student-portal-ajp.herokuapp.com/api/session', {
       username : user.username,
       password : user.password
     }, { responseType: 'text' } );

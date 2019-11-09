@@ -9,9 +9,11 @@ export class Posts {
     public authName;
     public content;
     public title;
-    public date
+    public date;
+    public video;
+    public Image;
 
-    constructor(id, publish, priority, authId, authName, content, title, date) {
+    constructor(id, publish, priority, authId, authName, content, title, date, video, Image) {
         this._id = id;
         this.publish = publish;
         this.priority = priority;
@@ -20,6 +22,8 @@ export class Posts {
         this.content = content;
         this.title = title;
         this.date = date;
+        this.video = video;
+        this.Image = Image;
     }
 }
 

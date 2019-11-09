@@ -6,7 +6,7 @@ import {LoginService} from './login/login.service';
 import {Observable, of} from 'rxjs';
 import {User} from './models/user.model';
 import {Posts} from './models/posts.model';
-import {Comments} from "./models/comments.model";
+import {Comments} from './models/comments.model';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ),
@@ -16,7 +16,8 @@ const httpOptions = {
 /**
  * Constant that contain the base url of the api
  */
-const apiUrl = 'https://sheltered-plains-85717.herokuapp.com/api/';
+// const apiUrl = 'https://sheltered-plains-85717.herokuapp.com/api/';
+const apiUrl = 'https://student-portal-ajp.herokuapp.com/api';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class ApiService {
    * Send get request to get all posts
    */
   getPosts(): Observable<Posts[]> {
-    const url = `${apiUrl}/posts`;
+    const url = `${apiUrl}/posts/all`;
     return this.http.get<Posts[]>(url);
   }
 
@@ -49,7 +50,7 @@ export class ApiService {
 
 
   addPosts(posts): Observable<Posts>{
-    const url =   `${apiUrl}post/new`;
+    const url =   `${apiUrl}/post/new`;
     const header = {
       headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
     };
@@ -58,7 +59,7 @@ export class ApiService {
   }
 
   addComments(comments): Observable<Comments> {
-    const url =   `${apiUrl}comment/new`;
+    const url =   `${apiUrl}/comment/new`;
     const header = {
       headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
     };

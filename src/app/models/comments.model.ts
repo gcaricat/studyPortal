@@ -5,14 +5,14 @@ export class Comments {
     public postId;
     public content;
     public title;
-    public date;
+    public publishDate;
 
-    constructor(id, authId, authName, postId, content, date) {
+    constructor(id, authId, authName, postId, content, publishDate) {
         this._id = id;
         this.authId = authId;
         this.authName = authName;
         this.postId = postId;
         this.content = content;
-        this.date = date;
+        this.publishDate = publishDate;
     }
 }

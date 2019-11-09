@@ -15,19 +15,20 @@
       <div class="col-md-12 col-xs-12 border-bottom border-gray mb-3">
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0">
-            <h5>{{ item.title}}  </h5>
+            <h3>{{ item.title}}  </h3>
             <strong class="inline-block text-gray-dark"><i class="fa fa-user"></i> {{item.authName}}</strong> -
             <small class="mb-2 inline-block"><i class="fa fa-calendar"></i> {{item.date}}</small>
+            <div [innerHtml]="item.video"></div>
             <p class="mb-2 mt-2 ">
-             {{item.content}}
+              {{item.content}}
             </p>
           </div>
         </div>
       </div>
-
       <app-comments [idPost]="item._id"></app-comments>
       <app-comments-add class="col-md-12 col-xs-12" [idPost]="item._id"></app-comments-add>
     </div>
+
   </div>
 
 </div>
