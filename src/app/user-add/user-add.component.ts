@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import {BsModalService, BsModalRef, TabsModule} from "ngx-bootstrap";
+// import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-user-add',
@@ -7,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAddComponent implements OnInit {
 
-  constructor() { }
+  modalRef: BsModalRef;
+
+  constructor(
+    private modalService: BsModalService
+  ){
+
+  }
 
   ngOnInit() {
   }
 
+  openAddUserModal(template: TemplateRef<any>)
+  {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'modal-lg' })
+    );
+
+  }
+
+  modifyUser(){
+
+  }
+
+  closeModal(){
+    this.modalRef.hide();
+  }
 }
+
+
+

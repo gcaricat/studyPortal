@@ -36,7 +36,7 @@ export class SidebarComponent implements OnInit {
           this.user.setDate(formattedDate+" "+formattedTime);
           this.user.setStatus(res.status );
           this.user.setRole(res.role);
-          this.user.setUsername(res.username);
+          this.user.setUsername(res.email);
           console.log(this.user);
         }, err => {
           console.log("dashboard err ", err);

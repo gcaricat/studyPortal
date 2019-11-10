@@ -1,20 +1,27 @@
 /**
  * User class
  */
+import {first} from "rxjs/operators";
+
 export class User {
   public _id;
-  public username;
+  public email;
   public password;
   public token;
   public role;
   public status;
   public registerDate;
+  public fistName;
+  public lastName;
+  public dateOfBirth;
+  public profilImage;
+
 
   /**
    * Initialize username and password
    */
   constructor() {
-    this.username = '';
+    this.email = '';
     this.password = '';
   }
 
@@ -51,17 +58,17 @@ export class User {
   setDate(date) {this.registerDate = date; }
 
   /**
-   * Set username
-   * @param username
+   * Set email
+   * @param email
    */
-  setUsername(username) {this.username = username; }
+  setEmail(email) {this.email = email; }
 
   getUserId(){return this._id;}
 
   /**
    * Get username
    */
-  getUsername() { return this.username; }
+  getEmail() { return this.email; }
 
   /**
    * Get Role
@@ -77,5 +84,49 @@ export class User {
    * Get registerDate
    */
   getRegisterDate() { return this.registerDate; }
+
+  getFirstName(){
+    return this.fistName;
+  }
+
+  setFirstName(firstName){
+    this.fistName = firstName;
+  }
+
+  getLastName(){
+    return this.lastName;
+  }
+
+  setLastName(lastName){
+    this.lastName = lastName;
+  }
+
+  getDateOfBirth(){
+    return this.dateOfBirth;
+  }
+
+  setDateOfBirth(dateOfBirth){
+   this.dateOfBirth = dateOfBirth;
+  }
+
+  getImageProfile(){
+    return this.profilImage;
+  }
+
+  setImageProfile(profileImage){
+    this.profilImage = profileImage;
+  }
+
+  getUsername(){
+    return this.email;
+  }
+
+  setUsername(email){
+    this.email = email;
+  }
+
 }
+
+
+
 

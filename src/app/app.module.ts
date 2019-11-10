@@ -15,8 +15,10 @@ import {PostsAddComponent} from './posts-add/posts-add.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentsAddComponent } from './comments-add/comments-add.component';
 import { RegisterComponent } from './register/register.component';
-import {EmbedVideo} from "ngx-embed-video/dist";
+import {EmbedVideo} from 'ngx-embed-video/dist';
 import { UserAddComponent } from './user-add/user-add.component';
+import {ModalModule,TabsModule} from 'ngx-bootstrap';
+import { UserModifyComponent } from './user-modify/user-modify.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { UserAddComponent } from './user-add/user-add.component';
     CommentsComponent,
     CommentsAddComponent,
     RegisterComponent,
-    UserAddComponent
+    UserAddComponent,
+    UserModifyComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,9 @@ import { UserAddComponent } from './user-add/user-add.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    EmbedVideo.forRoot()
+    EmbedVideo.forRoot(),
+    ModalModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [RootComponent]

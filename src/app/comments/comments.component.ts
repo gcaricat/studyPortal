@@ -48,7 +48,7 @@ export class CommentsComponent implements OnInit {
 
         if ( item.authId ) {
           this.apiService.getSingleAuthor(item.authId).subscribe( res => {
-            this.authName = res.username;
+            this.authName = res.email;
             const singleComment = new Comments(item._id, item.authId, this.authName, this.idPost, item.content, sendDate);
             this.listComments.push(singleComment);
           });

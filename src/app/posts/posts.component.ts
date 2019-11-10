@@ -20,11 +20,11 @@ export class PostsComponent implements OnInit {
   public isButtonVisible = false;
 
   rerender = false;
-  public embedService = null;
+  public embedService;
 
   constructor(
     private apiService: ApiService,
-    private embedService: EmbedVideoService
+      embedService: EmbedVideoService
   ) {
     this.embedService = embedService;
   }
@@ -58,7 +58,7 @@ export class PostsComponent implements OnInit {
         if ( item.authId ) {
 
           this.apiService.getSingleAuthor(item.authId).subscribe( res => {
-            this.authName = res.username;
+            this.authName = res.email;
             const singlePost = new Posts(
               item._id,
               item.publish,
@@ -88,7 +88,7 @@ export class PostsComponent implements OnInit {
 
     if ( userId !== 'undefined' && userId !== '' ) {
       this.apiService.getSingleAuthor(userId).subscribe( res => {
-          res.username.toString();
+          res.email.toString();
           // return res.username.toString();
         }
       );

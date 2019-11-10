@@ -36,7 +36,7 @@ export class LoginComponent {
    */
   validateLogin() {
 
-    if (this.user.username && this.user.password) {
+    if (this.user.email && this.user.password) {
       this.loginService.validateLogin(this.user).subscribe(
         result => {
           // Handle result

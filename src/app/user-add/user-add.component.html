@@ -1,3 +1,40 @@
-<p>
-  user-add works!
-</p>
+
+
+
+
+<script src="../api.service.spec.ts"></script>
+<div class="col-md-12 col-xs-12 text-center">
+  <button class="btn btn-primary" (click)="openAddUserModal(contentAddUser)">Modify user</button>
+</div>
+<ng-template #contentAddUser>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <tabset>
+      <tab heading="Modify user" id="tabModifyUser">
+        <app-user-modify></app-user-modify>
+      </tab>
+      <tab heading="Modify username" id="tabModifyUserName">
+        Modify Username
+      </tab>
+      <tab heading="Modify password" id="tabModifyUserPassword">
+        Modify Password
+      </tab>
+      <tab heading="Delete User" id="tabDeleteUser">
+        Delete User
+      </tab>
+    </tabset>
+
+<!--    <form [formGroup]="addUserForm" (ngSubmit)="addUser">-->
+<!--      -->
+<!--    </form>-->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Return</button>
+<!--    <button type="button" class="btn btn-primary" (click)="modifyUser()">Modify</button>-->
+  </div>
+</ng-template>

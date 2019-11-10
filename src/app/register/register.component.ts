@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private loginService: LoginService
+    private loginService: LoginService,
   )
   {
 
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
     var error = 0;
     const arrError = [];
 
-    if(f.value.email === ''){
+    if(f.value.email === '' ){
       error = 1;
       arrError.push('Email');
     }
@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
 
       console.log(arrUser);
 
+      console.log(arrUser);
       this.apiService.addUser(
         JSON.parse(
           JSON.stringify(
@@ -73,43 +74,44 @@ export class RegisterComponent implements OnInit {
         error1 => {
           console.log('errore', error1);
           if (error1.status === 201) {
+            this.user.setEmail(f.value.email);
+            this.user.password = f.value.password;
             f.reset();
             this.sleep(4000);
-          }else{
+
+            this.loginService.validateLogin(this.user).subscribe(
+              result => {
+                // Handle result
+                console.log('logged');
+                this.loginService.setToken(result); this.loginService.isLoggedIn$ = this.loginService.isLogged();
+                this.router.navigate(['/dashboard']);
+              },
+              error => {
+
+                switch ( error.status ) {
+                  case '404':
+                    alert('Error!Wrong Email or password');
+                    break;
+                  default:
+                    alert('Login Error!');
+                    break;
+                }
+              },
+              () => {
+                // 'onCompleted' callback.
+
+                // No errors, route to new page h
+                // this.router.navigateByUrl('/dashboard');
+
+              }
+            );
+
+
+          } else {
             console.log("critical error response post-add");
           }
         }
       );
-
-      this.loginService.validateLogin(this.user).subscribe(
-        result => {
-          // Handle result
-          console.log('logged');
-          this.loginService.setToken(result); this.loginService.isLoggedIn$ = this.loginService.isLogged();
-          this.router.navigate(['/dashboard']);
-
-        },
-        error => {
-
-          switch ( error.status ) {
-            case '404':
-              alert('Error!Wrong Email or password');
-              break;
-            default:
-              alert('Login Error!');
-              break;
-          }
-        },
-        () => {
-          // 'onCompleted' callback.
-
-          // No errors, route to new page h
-          // this.router.navigateByUrl('/dashboard');
-
-        }
-      );
-
-
     }else {
       alert('Error insert a value into'+arrError.join(","))
     }

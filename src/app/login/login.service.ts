@@ -30,7 +30,7 @@ export class LoginService {
    */
   validateLogin(user: User) {
     return this.http.post('https://student-portal-ajp.herokuapp.com/api/session', {
-      username : user.username,
+      username : user.email,
       password : user.password
     }, { responseType: 'text' } );
 

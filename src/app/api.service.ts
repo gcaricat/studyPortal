@@ -35,6 +35,25 @@ export class ApiService {
     });
   }
 
+  // addUser(user): Observable<User> {
+  //   const url =   `${apiUrl}/user/register`;
+  //   const header = {
+  //     headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
+  //   };
+  //
+  //   return this.http.post<User>(url, user, header );
+  // }
+
+  addUser(user): Observable<User> {
+    const url =   `${apiUrl}/user/register`;
+    const header = {
+      headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ),
+    };
+
+    return this.http.post<User>(url, user, header );
+  }
+
+
   /**
    * Send get request to get all posts
    */
@@ -43,13 +62,13 @@ export class ApiService {
     return this.http.get<Posts[]>(url);
   }
 
-  getCommentsFromPost(postId): Observable<Comments[]>{
+  getCommentsFromPost(postId): Observable<Comments[]> {
     const url = `${apiUrl}/comments/${postId}`;
     return this.http.get<Comments[]>(url);
   }
 
 
-  addPosts(posts): Observable<Posts>{
+  addPosts(posts): Observable<Posts> {
     const url =   `${apiUrl}/post/new`;
     const header = {
       headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
