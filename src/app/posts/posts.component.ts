@@ -35,7 +35,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
 
     this.apiService.getPosts().subscribe( (postsData: Posts[]) => {
-      // console.log(postsData);
+      console.log("postData",postsData);
       for (const item of postsData) {
         const currentDate = item.date;
 
@@ -54,25 +54,44 @@ export class PostsComponent implements OnInit {
             attr: { width: 600, height: 300 }
           });
         }
-
         if ( item.authId ) {
 
-          this.apiService.getSingleAuthor(item.authId).subscribe( res => {
-            this.authName = res.email;
-            const singlePost = new Posts(
-              item._id,
-              item.publish,
-              item.priority,
-              item.authId,
-              this.authName,
-              item.content,
-              item.title,
-              sendDate,
-              videoEmbed,
-              item.Image
-            );
-            this.listPosts.push(singlePost);
-          });
+          this.apiService.getSingleAuthor(item.authId).subscribe(
+            res => {
+                          this.authName = res.email;
+                          const singlePost = new Posts(
+                            item._id,
+                            item.publish,
+                            item.priority,
+                            item.authId,
+                            this.authName,
+                            item.content,
+                            item.title,
+                            sendDate,
+                            videoEmbed,
+                            item.Image
+                          );
+                          this.listPosts.push(singlePost);
+                        },
+                  error => {
+
+                    // if(error.status == 422){ //Author not exists
+                    //   this.authName = 'Anonymous'
+                    //   const singlePost = new Posts(
+                    //     item._id,
+                    //     item.publish,
+                    //     item.priority,
+                    //     item.authId,
+                    //     this.authName,
+                    //     item.content,
+                    //     item.title,
+                    //     sendDate,
+                    //     videoEmbed,
+                    //     item.Image
+                    //   );
+                    //   this.listPosts.push(singlePost);
+                    // }
+                  });
         }
       }
     });

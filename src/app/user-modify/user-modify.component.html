@@ -5,10 +5,63 @@
   </div>
   <div class="col-md-12 col-xs-12">
     <form #modifyUserForm="ngForm" (ngSubmit)="modifyUser(modifyUserForm)" >
-      <div class="col-md-12 col-xs-12 mb-3">
-        <label for="inputfistName" class="sr-only">Name</label>
-        <input name="fistName" ngModel required #title="ngModel" class="form-control"  id="inputfistName" required placeholder="Insert a First Name">
+      <div class="row">
+        <div class="col-md-6 col-xs-12 mb-3">
+          <label for="inputfistName" class="sr-only">Name</label>
+          <input name="fistName" ngModel required #title="ngModel" class="form-control"  id="inputfistName" required placeholder="Insert a First Name">
+        </div>
+        <div class="col-md-6 col-xs-12 mb-3">
+          <label for="inputlastName" class="sr-only">Name</label>
+          <input name="lastName" ngModel required #title="ngModel" class="form-control"  id="inputlastName" required placeholder="Insert a Last Name">
+        </div>
+       <div class="col-md-12 col-xs-12 mb-3">
+        <label for="inputdateOfBirth" class="sr-only">Date of birth</label>
+         <input id="inputdateOfBirth"
+                type="text"
+                ngModel
+                name="dateOfBirth"
+                placeholder="Date of birth"
+                class="form-control"
+                bsDatepicker
+                [bsConfig]="{ isAnimated: true }" autocomplete="off" >
       </div>
+        <div class="col-md-12 col-xs-12 mb-3 text-center" *ngIf="showNoImage">
+          <figure>
+            <img src="../../assets/img/no-image.png">
+          </figure>
+        </div>
+        <div class="col-md-6 col-xs-12 mb-3" *ngIf="!showNoImage">
+          <h5>Original Image</h5>
+          <image-cropper heigth="300px"
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 4"
+            [resizeToWidth]="256"
+            format="png"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+<!--          <figure>-->
+<!--            <img src="../../assets/img/no-image.png" *ngIf="showNoImage" >-->
+<!--            <img [src]="'data:image/jpg;base64,'+imageUrl64" *ngIf="imageUrl64" height="200px" >-->
+<!--          </figure>-->
+<!--          <input name="profilImage" type="file" accept="image/*" (change)="onFileChanged($event)" >-->
+        </div>
+        <div class="text-center col-md-6" *ngIf="!showNoImage">
+          <h5>Preview</h5>
+          <img [src]="croppedImage" />
+        </div>
+        <div class="col-md-12 text-center" id="contenitor-Btn-image" >
+          <input id="fileImageprofile" type="file" (change)="fileChangeEvent($event)" />
+          <label for="fileImageprofile">Change image profile</label>
+        </div>
+      </div>
+      <div class="col-md-12 col-xs-12">
+        <button class="btn btn-primary btn-block" type="submit" >Save</button>
+      </div>
+
     </form>
   </div>
 </div>

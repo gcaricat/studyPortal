@@ -53,6 +53,14 @@ export class ApiService {
     return this.http.post<User>(url, user, header );
   }
 
+  modifyUser(user, userId): Observable<User> {
+    const url = `${apiUrl}/user/${userId}`;
+    const header = {
+      headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
+    };
+
+    return this.http.post<User>(url, user, header );
+  }
 
   /**
    * Send get request to get all posts

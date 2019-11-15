@@ -22,10 +22,8 @@ export class SidebarComponent implements OnInit {
      */
   constructor(private apiService: ApiService) {
     this.user = new User();
-
     this.apiService.getUser()
         .subscribe(res => {
-          console.log(res.registerDate);
           var date =  new Date(+(res.registerDate.match(/\d+/)[0]));
 
           var formattedDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
@@ -37,7 +35,7 @@ export class SidebarComponent implements OnInit {
           this.user.setStatus(res.status );
           this.user.setRole(res.role);
           this.user.setUsername(res.email);
-          console.log(this.user);
+
         }, err => {
           console.log("dashboard err ", err);
 

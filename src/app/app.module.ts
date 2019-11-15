@@ -17,8 +17,11 @@ import { CommentsAddComponent } from './comments-add/comments-add.component';
 import { RegisterComponent } from './register/register.component';
 import {EmbedVideo} from 'ngx-embed-video/dist';
 import { UserAddComponent } from './user-add/user-add.component';
-import {ModalModule,TabsModule} from 'ngx-bootstrap';
+import {ModalModule, TabsModule, BsDatepickerModule} from 'ngx-bootstrap';
 import { UserModifyComponent } from './user-modify/user-modify.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ImageCropperModule} from "ngx-image-cropper";
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,7 @@ import { UserModifyComponent } from './user-modify/user-modify.component';
     CommentsAddComponent,
     RegisterComponent,
     UserAddComponent,
-    UserModifyComponent
+    UserModifyComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,10 @@ import { UserModifyComponent } from './user-modify/user-modify.component';
     ReactiveFormsModule,
     EmbedVideo.forRoot(),
     ModalModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [RootComponent]

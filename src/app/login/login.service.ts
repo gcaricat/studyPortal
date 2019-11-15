@@ -29,8 +29,8 @@ export class LoginService {
    * @param user
    */
   validateLogin(user: User) {
-    return this.http.post('https://student-portal-ajp.herokuapp.com/api/session', {
-      username : user.email,
+    return this.http.post('https://student-portal-ajp.herokuapp.com/api/session/', {
+      email : user.email,
       password : user.password
     }, { responseType: 'text' } );
 
@@ -60,7 +60,7 @@ export class LoginService {
 
   /**
    * Logout to the application
-   * cear the localstorage and return into the login page
+   * clear the localstorage and return into the login page
    */
   logout() {
     localStorage.removeItem(TOKEN);
