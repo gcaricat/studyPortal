@@ -71,7 +71,7 @@ export class PostsAddComponent implements OnInit {
           "video": f.value.video,
           // "image": this.ImageBase64
           //"Image": this.selectedFile
-          "image": f.value.Image
+          "Image": f.value.Image
         }
       ];
 
