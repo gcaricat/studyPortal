@@ -23,10 +23,13 @@ const apiUrl = 'https://student-portal-ajp.herokuapp.com/api';
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private http: HttpClient, private loginService: LoginService) { }
+  constructor(
+    private http: HttpClient,
+    private loginService: LoginService
+  ) { }
 
   /**
-   * throught the user token into X-Auth header  send the get request to get information about logged user
+   * Throught the user token into X-Auth header  send the get request to get information about logged user
    */
   getUser(): Observable<User> {
     const url = `${apiUrl}/user`;
@@ -35,15 +38,10 @@ export class ApiService {
     });
   }
 
-  // addUser(user): Observable<User> {
-  //   const url =   `${apiUrl}/user/register`;
-  //   const header = {
-  //     headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
-  //   };
-  //
-  //   return this.http.post<User>(url, user, header );
-  // }
-
+  /**
+   * add user
+   * @param user: User
+   */
   addUser(user): Observable<User> {
     const url =   `${apiUrl}/user/register`;
     const header = {
@@ -53,13 +51,27 @@ export class ApiService {
     return this.http.post<User>(url, user, header );
   }
 
-  modifyUser(user, userId): Observable<User> {
+  /**
+   * modify the user
+   * @param user
+   * @param userId
+   */
+  modifyUser(user, userId) {
     const url = `${apiUrl}/user/${userId}`;
     const header = {
-      headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
+      headers: new HttpHeaders().set("Content-Type", "application/json").append('Authorization', this.loginService.getToken() ),
     };
 
-    return this.http.post<User>(url, user, header );
+    return this.http.put(url, user, header );
+  }
+
+  deleteUser(userId) {
+    const url = `${apiUrl}/user/${userId}`;
+    const header = {
+      headers: new HttpHeaders().set("Content-Type", "application/json").append('Authorization', this.loginService.getToken() ),
+    };
+
+    return this.http.delete(url, header);
   }
 
   /**
@@ -74,7 +86,6 @@ export class ApiService {
     const url = `${apiUrl}/comments/${postId}`;
     return this.http.get<Comments[]>(url);
   }
-
 
   addPosts(posts): Observable<Posts> {
     const url =   `${apiUrl}/post/new`;

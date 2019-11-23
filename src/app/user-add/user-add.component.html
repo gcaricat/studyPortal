@@ -1,7 +1,4 @@
 
-
-
-
 <script src="../api.service.spec.ts"></script>
 <div class="col-md-12 col-xs-12 text-center">
   <button class="btn btn-primary" (click)="openAddUserModal(contentAddUser)">Modify user</button>
@@ -18,14 +15,14 @@
       <tab heading="Modify user" id="tabModifyUser">
         <app-user-modify></app-user-modify>
       </tab>
-      <tab heading="Modify username" id="tabModifyUserName">
-        Modify Username
-      </tab>
-      <tab heading="Modify password" id="tabModifyUserPassword">
-        Modify Password
-      </tab>
-      <tab heading="Delete User" id="tabDeleteUser">
-        Delete User
+<!--      <tab heading="Modify username" id="tabModifyUserName">-->
+<!--        Modify Username-->
+<!--      </tab>-->
+<!--      <tab heading="Modify password" id="tabModifyUserPassword">-->
+<!--        Modify Password-->
+<!--      </tab>-->
+      <tab heading="Delete Account" id="tabDeleteUser">
+        <app-user-delete></app-user-delete>
       </tab>
     </tabset>
 

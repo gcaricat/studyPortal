@@ -12,21 +12,33 @@
 
   <div class="col-md-12 col-xs-12" *ngFor="let item of listPosts" >
     <div class="row" *ngIf="( item.authId ) ">
-      <div class="col-md-12 col-xs-12 border-bottom border-gray mb-3">
+      <div class="col-md-8 col-xs-12 border-bottom border-gray mb-3">
         <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0">
-            <h3>{{ item.title}}  </h3>
-            <strong class="inline-block text-gray-dark"><i class="fa fa-user"></i> {{item.authName}}</strong> -
-            <small class="mb-2 inline-block"><i class="fa fa-calendar"></i> {{item.date}}</small>
-            <div [innerHtml]="item.video"></div>
-            <p class="mb-2 mt-2 ">
-              {{item.content}}
-            </p>
+          <div class="media-body">
+            <div class="row">
+              <div class="col-md-12 col-12">
+                <div class="image-wrapper float-left pr-3">
+                  <figure>
+                    <img class="rounded-circle" [src]="item.author.getImageProfile() != null ? item.author.getImageProfile() : '../assets/img/no-image.png'" width="40px" height="40px">
+                  </figure>
+                </div>
+                <div class="single-post-content-wrapper">
+                  <p class="author_name mb-0"><a href="javascript:void(0)">{{ item.author.firstName !== '' && item.author.lastName !== '' ? item.author.firstName+' '+item.author.lastName : 'User' }}</a></p>
+                  <small class="post_date">{{item.date}}</small>
+                </div>
+                </div>
+              <div class="col-md-12 col-12">
+                <div [innerHtml]="item.video"></div>
+                <p class="mb-2 mt-2 ">
+                  {{item.content}}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <app-comments [idPost]="item._id"></app-comments>
-      <app-comments-add class="col-md-12 col-xs-12" [idPost]="item._id"></app-comments-add>
+      <app-comments-add class="col-md-8 col-xs-12" [idPost]="item._id"></app-comments-add>
     </div>
 
   </div>

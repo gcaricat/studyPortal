@@ -1,0 +1,11 @@
+.author_name{
+  font-size: 14px;
+  line-height: 1.38;
+  font-weight: 700;
+  color: #bdbdbd;
+}
+
+.post_date{
+  color: #bdbdbd;
+  font-size: 12px;
+}

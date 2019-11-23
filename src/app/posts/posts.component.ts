@@ -2,6 +2,8 @@ import {Component, NgModule, OnInit} from '@angular/core';
 import {ApiService} from '../api.service';
 import {Posts} from '../models/posts.model';
 import {EmbedVideo, EmbedVideoService} from "ngx-embed-video/dist";
+import {User} from "../models/user.model";
+import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-posts',
@@ -13,7 +15,7 @@ export class PostsComponent implements OnInit {
    * Array that contain all posts
    */
   public listPosts: Posts[] = [];
-  public authName;
+  public author: User;
   /**
    * Used to hidden the add post form
    */
@@ -58,13 +60,26 @@ export class PostsComponent implements OnInit {
 
           this.apiService.getSingleAuthor(item.authId).subscribe(
             res => {
-                          this.authName = res.email;
+                          this.author = new User();
+
+                          const firstName = (typeof res.firstName !== 'undefined') ? res.firstName : '';
+                          const lastName = (typeof res.lastName !== 'undefined') ? res.lastName : '';
+                          const email = (typeof res.email !== 'undefined') ? res.email : '';
+                          const role = (typeof res.role !== 'undefined') ? res.role : '';
+                          const profileImage = (typeof res.profilImage !== 'undefined' || res.profilImage !== '') ? res.profilImage : '';
+
+                          this.author.setFirstName(firstName);
+                          this.author.setLastName(lastName);
+                          this.author.setEmail(email);
+                          this.author.setRole(role);
+                          this.author.setImageProfile(profileImage);
+
                           const singlePost = new Posts(
                             item._id,
                             item.publish,
                             item.priority,
                             item.authId,
-                            this.authName,
+                            this.author,
                             item.content,
                             item.title,
                             sendDate,

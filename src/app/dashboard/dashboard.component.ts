@@ -21,7 +21,10 @@ export class DashboardComponent implements OnInit {
    * @param loginService instance of class LoginService that contain functions to login control
    * @param router instance of angular class Router that used to routing throught components
    */
-   constructor(private loginService: LoginService, private router: Router) { }
+   constructor(
+     private loginService: LoginService,
+     private router: Router
+  ) { }
 
   /**
    * First operations when we are loged to the page
@@ -30,7 +33,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     if ( !this.loginService.isLogged() ) {
-      this.router.navigate(['login']);
+      // this.router.navigate(['login']);
+      this.router.navigate(['']);
     }
   }
 

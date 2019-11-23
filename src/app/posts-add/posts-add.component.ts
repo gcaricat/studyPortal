@@ -71,13 +71,12 @@ export class PostsAddComponent implements OnInit {
           "video": f.value.video,
           // "image": this.ImageBase64
           //"Image": this.selectedFile
-          "Image": f.value.Image
+          "image": f.value.Image
         }
       ];
 
       this.apiService.addPosts( JSON.parse( JSON.stringify(arrPost[0]) ) ).subscribe(res =>{
           this.postComponent.ngOnInit();
-
         },
         error1 => {
           console.log('errore', error1);

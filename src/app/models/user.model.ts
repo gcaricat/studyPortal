@@ -11,7 +11,7 @@ export class User {
   public role;
   public status;
   public registerDate;
-  public fistName;
+  public firstName;
   public lastName;
   public dateOfBirth;
   public profilImage;
@@ -86,11 +86,11 @@ export class User {
   getRegisterDate() { return this.registerDate; }
 
   getFirstName(){
-    return this.fistName;
+    return this.firstName;
   }
 
   setFirstName(firstName){
-    this.fistName = firstName;
+    this.firstName = firstName;
   }
 
   getLastName(){

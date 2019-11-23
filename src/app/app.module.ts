@@ -21,6 +21,8 @@ import {ModalModule, TabsModule, BsDatepickerModule} from 'ngx-bootstrap';
 import { UserModifyComponent } from './user-modify/user-modify.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ImageCropperModule} from "ngx-image-cropper";
+import {DatePipe} from '@angular/common';
+import { UserDeleteComponent } from './user-delete/user-delete.component';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import {ImageCropperModule} from "ngx-image-cropper";
     RegisterComponent,
     UserAddComponent,
     UserModifyComponent,
+    UserDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,9 @@ import {ImageCropperModule} from "ngx-image-cropper";
     BsDatepickerModule.forRoot(),
     ImageCropperModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [RootComponent]
 })
 export class AppModule { }

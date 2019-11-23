@@ -1,14 +1,16 @@
 <div class="profile-sidebar">
   <figure>
-    <img src="assets/img/no-image.png" class="rounded-circle img-thumbnail">
+
+    <img [src]="this.user.getImageProfile() != null ? this.user.getImageProfile() : 'assets/img/no-image.png' " class="rounded-circle img-thumbnail">
   </figure>
   <div class="profile-title text-center">
     <h5>
-      <i [ngClass]="this.user.getStatus() == 'active' ? 'text-success' : 'text-danger'" class="fa fa-check-circle-o"></i>
-      {{this.user.getUsername()}}
+      <i [ngClass]="this.user.getStatus() == 'active' ? 'text-success' : 'text-danger'" class="fa fa-check-circle-o mr-2"></i>
+      <span *ngIf="this.user.getFirstName() || this.user.getLastName()">{{this.user.getFirstName()}} {{this.user.getLastName()}}</span>
     </h5>
-    <p><small>Role: {{this.user.getRole()}}</small></p>
-    <p><small>Registation {{this.user.getRegisterDate()}}</small></p>
+    <small class="text-center">{{this.user.getUsername()}}</small>
+    <p class="mb-0"><small>Role: {{this.user.getRole()}}</small></p>
+    <p class="mt-1"><small>Registation {{this.user.getRegisterDate()}}</small></p>
   </div>
   <div class="profile-menu" hidden>
     <ul class="nav flex-column">
