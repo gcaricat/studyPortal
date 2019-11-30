@@ -1,5 +1,5 @@
 .author_name{
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.38;
   font-weight: 700;
   color: #bdbdbd;
@@ -7,5 +7,19 @@
 
 .post_date{
   color: #bdbdbd;
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.post-figure-contenitor{
+  height: 300px;
+}
+
+.post-figure-contenitor img{
+  height: 100%;
+  width: auto;
+}
+
+.hr_post{
+  margin-top: 0px;
+  border: 1px solid #a3cfff52;
 }

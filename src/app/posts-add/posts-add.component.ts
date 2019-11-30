@@ -4,7 +4,8 @@ import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {PostsComponent} from '../posts/posts.component';
-import {EmbedVideoService} from "ngx-embed-video/dist";
+import {EmbedVideoService} from 'ngx-embed-video/dist';
+
 
 @Component({
   selector: 'app-posts-add',
@@ -96,13 +97,18 @@ export class PostsAddComponent implements OnInit {
     }
 
     if ( !error ) {
+
+      if (this.ImageBase64 != '' && this.ImageBase64 != null) {
+        this.ImageBase64 = 'data:image/jpg;base64,' + this.ImageBase64;
+      }
+
       const arrPost: object = [
         {
           "authId": this.sideBar.user._id,
           "title": f.value.title,
           "content": f.value.content,
           "video": f.value.video,
-          "image": 'data:image/jpg;base64,' + this.ImageBase64
+          "image": this.ImageBase64
         }
       ];
 

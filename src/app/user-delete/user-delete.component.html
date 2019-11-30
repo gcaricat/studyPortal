@@ -3,17 +3,17 @@
     <h4 class="text-center">Deleting your account is permanent.</h4>
     <hr>
   </div>
-  <div class="col-md-12 col-xs-12">
+  <div class="col-md-12 col-12">
     <form #deleteUserForm="ngForm" (ngSubmit)="deleteUser(deleteUserForm)" >
       <div class="row">
-        <div class="col-md-12 col-xs-12 mb-3">
+        <div class="col-md-12 col-12 mb-3">
           <p>When you delete your studyPortal account, you will not be able to retrieve the content or information you shared.</p>
           <p>If you want to continue, type <strong>DELETE</strong> in the input below and click on the button delete.</p>
         </div>
-        <div class="col-md-12 col-xs-12 mb-3">
+        <div class="col-md-12 col-12 mb-3">
           <input name="inputDeleteProfile" ngModel required #title="ngModel" class="form-control"  id="inputDeleteProfile"  placeholder="type DELETE">
         </div>
-        <div class="col-md-12 col-xs-12 mb-3">
+        <div class="col-md-12 col-12 mb-3">
           <button class="btn btn-primary btn-block" type="submit" >Delete</button>
         </div>
       </div>

@@ -1,18 +1,22 @@
-<div class="col-md-12 col-xs-12 mt2 mb-2 mt-3 border-primary">
+<div class="col-md-12 col-12 mt2 mb-2 mt-3 border-primary">
   <form #f="ngForm" (ngSubmit)="onFormSubmit(f)" novalidate>
     <div class="row">
-      <div class="col-md-12 col-xs-12 mb-3">
+      <div class="col-md-12 col-12 mb-3">
         <div class="row">
-          <div class="d-inline mr-4">
-             <p class="comment-add"><i class="fa fa-commenting-o fa-2x"></i></p>
-          </div>
+<!--          <div class="d-inline mr-4">-->
+<!--             <p class="comment-add"><i class="fa fa-commenting-o fa-2x"></i></p>-->
+<!--          </div>-->
           <div class="d-inline w-75 ">
-            <textarea ngModel required #content="ngModel" name="content" class="form-control" id="inputContent" required placeholder="Insert a Content"></textarea>
+            <textarea ngModel required #content="ngModel" name="content" class="form-control form-control-lg" id="inputContent" required placeholder="Insert a Content"></textarea>
+<!--            <p class="comment-add"><i class="fa fa-commenting-o fa-2x"></i></p>-->
           </div>
         </div>
       </div>
-      <div class="col-md-12 col-xs-12 pl-0">
+      <div class="col-md-12 col-12 pl-0">
         <button class="btn btn-primary" type="submit" >Save</button>
+      </div>
+      <div class="col-md-12 col-12 pl-0 pr-0">
+        <hr />
       </div>
     </div>
   </form>

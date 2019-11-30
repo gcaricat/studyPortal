@@ -3,18 +3,18 @@
     <h4 class="text-center">Modify user information</h4>
     <hr>
   </div>
-  <div class="col-md-12 col-xs-12">
+  <div class="col-md-12 col-12">
     <form #modifyUserForm="ngForm" (ngSubmit)="modifyUser(modifyUserForm)" >
       <div class="row">
-        <div class="col-md-6 col-xs-12 mb-3">
+        <div class="col-md-6 col-12 mb-3">
           <label for="inputfirstName" class="sr-only">Name</label>
           <input name="firstName" ngModel required #title="ngModel" class="form-control" id="inputfirstName" required placeholder="Insert a First Name" [value]="this.sideBar.user.getFirstName()">
         </div>
-        <div class="col-md-6 col-xs-12 mb-3">
+        <div class="col-md-6 col-12 mb-3">
           <label for="inputlastName" class="sr-only">Name</label>
           <input name="lastName" ngModel required #title="ngModel" class="form-control"  id="inputlastName" required placeholder="Insert a Last Name" [value]="this.sideBar.user.getLastName()">
         </div>
-       <div class="col-md-12 col-xs-12 mb-3">
+       <div class="col-md-12 col-12 mb-3">
         <label for="inputdateOfBirth" class="sr-only">Date of birth</label>
          <input id="inputdateOfBirth"
                 type="text"
@@ -28,12 +28,12 @@
          >
 
       </div>
-        <div class="col-md-12 col-xs-12 mb-3 text-center" *ngIf="showNoImage">
+        <div class="col-md-12 col-12 mb-3 text-center" *ngIf="showNoImage">
           <figure>
             <img [src]="this.sideBar.user.getImageProfile() != null ? this.sideBar.user.getImageProfile() : '../../assets/img/no-image.png'" width="200px" height="200px">
           </figure>
         </div>
-        <div class="col-md-6 col-xs-12 mb-3" *ngIf="!showNoImage">
+        <div class="col-md-6 col-12 mb-3" *ngIf="!showNoImage">
           <h5>Original Image</h5>
           <image-cropper heigth="200px"
             [imageChangedEvent]="imageChangedEvent"
@@ -61,7 +61,7 @@
           <label for="fileImageprofile">Change image profile</label>
         </div>
       </div>
-      <div class="col-md-12 col-xs-12">
+      <div class="col-md-12 col-12">
         <button class="btn btn-primary btn-block" type="submit" >Save</button>
       </div>
 

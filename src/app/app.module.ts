@@ -40,7 +40,7 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     RegisterComponent,
     UserAddComponent,
     UserModifyComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +53,7 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     TabsModule.forRoot(),
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    ImageCropperModule
+    ImageCropperModule,
   ],
   providers: [
     DatePipe

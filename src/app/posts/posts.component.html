@@ -5,14 +5,14 @@
   </div>
 </div>
 <div class="my-3 p-3 bg-white rounded box-shadow">
-  <div class="col-md-12 col-xs-12 border-bottom border-gray pb-2 mb-3 ">
+  <div class="col-md-12 col-12 border-bottom border-gray pb-2 mb-3 ">
     <a class="btn btn-lg btn-primary btn-block" href="javascript:void(0)" (click)="checkBtnVisible();">Add Post</a>
   </div>
   <app-posts-add [isButtonVisible]="isButtonVisible" *ngIf="isButtonVisible" ></app-posts-add>
 
-  <div class="col-md-12 col-xs-12" *ngFor="let item of listPosts" >
+  <div class="col-md-12 col-12" *ngFor="let item of listPosts" >
     <div class="row" *ngIf="( item.authId ) ">
-      <div class="col-md-8 col-xs-12 border-bottom border-gray mb-3">
+      <div class="col-md-8 col-12 border-bottom border-gray mb-3">
         <div class="media text-muted pt-3">
           <div class="media-body">
             <div class="row">
@@ -28,20 +28,37 @@
                 </div>
                 </div>
               <div class="col-md-12 col-12">
-                <div [innerHtml]="item.video"></div>
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <div [innerHtml]="item.video"></div>
+                  </div>
+                  <div class="col-md-6 col-12 mt-3">
+                    <h3>{{item.title}}</h3>
+                    <hr class="w-50 float-left hr_post" />
+                  </div>
+                  <div *ngIf="item.image != null && item.image != '' " class="col-md-12 col-12">
+                    <figure class="post-figure-contenitor">
+                      <img *ngIf="item.image != null && item.image != '' "  src="{{item.image}}"  />
+                    </figure>
+                  </div>
+                  <div class="col-md-12 col-12">
+                    <p class="mb-4 mt-2 ">
+                      {{item.content}}
+                    </p>
+                  </div>
+                </div>
+
 <!--                <img *ngIf="item.image != null" [src]="'data:image/jpeg;base64,' + item.image"  />-->
-                <img *ngIf="item.image != null"  src="{{item.image}}"  />
-                <h3>{{item.title}}</h3>
-                <p class="mb-2 mt-2 ">
-                  {{item.content}}
-                </p>
+
+
+
               </div>
             </div>
           </div>
         </div>
       </div>
       <app-comments [idPost]="item._id"></app-comments>
-      <app-comments-add class="col-md-8 col-xs-12" [idPost]="item._id"></app-comments-add>
+      <app-comments-add class="col-md-8 col-12" [idPost]="item._id"></app-comments-add>
     </div>
 
   </div>
