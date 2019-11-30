@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {PostsComponent} from '../posts/posts.component';
+import {EmbedVideoService} from "ngx-embed-video/dist";
 
 @Component({
   selector: 'app-posts-add',
@@ -18,24 +19,56 @@ export class PostsAddComponent implements OnInit {
   video: webkitURL = null;
   selectedFile: File;
 
+  public showVideo: Boolean = false;
+  public showImage: Boolean = false;
   private ImageBase64: String = '';
+  public embedService;
+  public video_preview = null;
 
   @Input() isButtonVisible: boolean;
 
-  constructor(private router: Router, private apiService: ApiService, public sideBar: SidebarComponent, public postComponent: PostsComponent) { }
+  constructor(
+    private router: Router,
+    private apiService: ApiService,
+    public sideBar: SidebarComponent,
+    public postComponent: PostsComponent,
+    embeddService: EmbedVideoService
+  )
+  {
+    this.embedService = embeddService;
+  }
 
   ngOnInit() {
   }
 
   onFileChanged(event) {
+    this.showImage = false;
     var files = event.target.files;
     var file = files[0];
     this.selectedFile = file;
     if (files && file) {
+      this.showImage = true;
       var reader = new FileReader();
       reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
     }
+  }
+
+  videoChange(video)
+  {
+    this.showVideo = false;
+    this.video_preview = null;
+
+    if (video !== null && typeof video !== 'undefined' && this.validURL(video) ) {
+      this.showVideo = true;
+
+      this.video_preview = this.embedService.embed(video,{
+        query: { portrait: 0, color: '333' },
+        attr: { width: 600, height: 300 }
+      });
+
+    }
+
   }
 
   onUpload() {
@@ -69,9 +102,7 @@ export class PostsAddComponent implements OnInit {
           "title": f.value.title,
           "content": f.value.content,
           "video": f.value.video,
-          // "image": this.ImageBase64
-          //"Image": this.selectedFile
-          "Image": f.value.Image
+          "image": 'data:image/jpg;base64,' + this.ImageBase64
         }
       ];
 

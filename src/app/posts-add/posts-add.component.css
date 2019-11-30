@@ -1,0 +1,35 @@
+#contenitor-Btn-image input[type=file] {
+  display:none;
+  margin:10px;
+}
+#contenitor-Btn-image input[type=file] + label {
+  display:inline-block;
+  margin:20px 0px;
+  padding: 11px 32px;
+  border: 1px solid #007bff;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+}
+#contenitor-Btn-image input[type=file] + label:hover{
+  background-color:  #fff;
+  color: #007bff;
+}
+
+#contenitor-Btn-image input[type=file]:active + label {
+  background-image: none;
+  background-color:#2D6C7A;
+  color:#FFFFFF;
+}
+
+.contenitor-image-post-add{
+  width: 100%;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.contenitor-image-post-add img{
+  width: 100%;
+  height: auto;
+
+}

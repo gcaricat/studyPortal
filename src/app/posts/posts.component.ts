@@ -37,7 +37,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
 
     this.apiService.getPosts().subscribe( (postsData: Posts[]) => {
-      console.log("postData",postsData);
+
       for (const item of postsData) {
         const currentDate = item.date;
 
@@ -84,7 +84,7 @@ export class PostsComponent implements OnInit {
                             item.title,
                             sendDate,
                             videoEmbed,
-                            item.Image
+                            item.image
                           );
                           this.listPosts.push(singlePost);
                         },

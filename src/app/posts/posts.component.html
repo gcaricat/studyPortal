@@ -29,6 +29,9 @@
                 </div>
               <div class="col-md-12 col-12">
                 <div [innerHtml]="item.video"></div>
+<!--                <img *ngIf="item.image != null" [src]="'data:image/jpeg;base64,' + item.image"  />-->
+                <img *ngIf="item.image != null"  src="{{item.image}}"  />
+                <h3>{{item.title}}</h3>
                 <p class="mb-2 mt-2 ">
                   {{item.content}}
                 </p>
