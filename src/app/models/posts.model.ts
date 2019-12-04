@@ -1,5 +1,5 @@
 /**
- * Posts class used to save the posts sended via api
+ * Posts class used for the crud operation via api
  */
 import {User} from "./user.model";
 

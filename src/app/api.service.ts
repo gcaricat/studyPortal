@@ -16,7 +16,6 @@ const httpOptions = {
 /**
  * Constant that contain the base url of the api
  */
-// const apiUrl = 'https://sheltered-plains-85717.herokuapp.com/api/';
 const apiUrl = 'https://student-portal-ajp.herokuapp.com/api';
 
 @Injectable({

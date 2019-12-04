@@ -7,7 +7,6 @@ import {ApiService} from '../api.service';
 /**
  * Component used to manage the user login
  */
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

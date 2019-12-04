@@ -69,7 +69,6 @@ export class RegisterComponent implements OnInit {
         )
       ).subscribe(
         res=>{
-          console.log("ciao",this);
         },
         error1 => {
           console.log('errore', error1);
@@ -115,10 +114,7 @@ export class RegisterComponent implements OnInit {
     }else {
       alert('Error insert a value into'+arrError.join(","))
     }
-
-
   }
-
 
   sleep(milliseconds) {
     const start = new Date().getTime();

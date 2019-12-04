@@ -47,7 +47,6 @@ export class CommentsAddComponent implements OnInit {
             this.commentComponent.ngOnInit();
           },
           error1 => {
-            console.log('errore into add comment', error1);
 
             if (error1.status === 201) {
 
@@ -78,7 +77,7 @@ export class CommentsAddComponent implements OnInit {
   }
 
   /**
-   * Get usernamen of logged user
+   * Get username of logged user
    */
   getUserName(){
     return this.sideBar.user.getUsername();

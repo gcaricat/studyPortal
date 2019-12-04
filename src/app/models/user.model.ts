@@ -1,5 +1,5 @@
 /**
- * User class
+ * User Class used for the crud operation via Api
  */
 import {first} from "rxjs/operators";
 
@@ -24,7 +24,6 @@ export class User {
     this.email = '';
     this.password = '';
   }
-
 
   setId(id){
     this._id = id;

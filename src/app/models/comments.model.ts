@@ -1,3 +1,6 @@
+/**
+ * Comment class used for the crud operation via Api
+ */
 export class Comments {
     public _id;
     public authId;
