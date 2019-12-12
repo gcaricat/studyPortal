@@ -47,18 +47,21 @@
                     </p>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <h3> Comments:</h3>
+                  </div>
 
-<!--                <img *ngIf="item.image != null" [src]="'data:image/jpeg;base64,' + item.image"  />-->
-
-
+                  <app-comments  class="col-md-12 col-12" [idPost]="item._id"></app-comments>
+                  <app-comments-add class="col-md-12 col-12" [idPost]="item._id"></app-comments-add>
+                </div>
 
               </div>
             </div>
           </div>
         </div>
       </div>
-      <app-comments [idPost]="item._id"></app-comments>
-      <app-comments-add class="col-md-8 col-12" [idPost]="item._id"></app-comments-add>
+
     </div>
 
   </div>

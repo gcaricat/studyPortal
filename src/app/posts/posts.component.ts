@@ -59,57 +59,57 @@ export class PostsComponent implements OnInit {
         if ( item.authId ) {
 
           this.apiService.getSingleAuthor(item.authId).subscribe(
-            res => {
-                          this.author = new User();
+                res => {
+                              this.author = new User();
 
-                          const firstName = (typeof res.firstName !== 'undefined') ? res.firstName : '';
-                          const lastName = (typeof res.lastName !== 'undefined') ? res.lastName : '';
-                          const email = (typeof res.email !== 'undefined') ? res.email : '';
-                          const role = (typeof res.role !== 'undefined') ? res.role : '';
-                          const profileImage = (typeof res.profilImage !== 'undefined' || res.profilImage !== '') ? res.profilImage : '';
+                              const firstName = (typeof res.firstName !== 'undefined') ? res.firstName : '';
+                              const lastName = (typeof res.lastName !== 'undefined') ? res.lastName : '';
+                              const email = (typeof res.email !== 'undefined') ? res.email : '';
+                              const role = (typeof res.role !== 'undefined') ? res.role : '';
+                              const profileImage = (typeof res.profilImage !== 'undefined' || res.profilImage !== '') ? res.profilImage : '';
 
-                          this.author.setFirstName(firstName);
-                          this.author.setLastName(lastName);
-                          this.author.setEmail(email);
-                          this.author.setRole(role);
-                          this.author.setImageProfile(profileImage);
+                              this.author.setFirstName(firstName);
+                              this.author.setLastName(lastName);
+                              this.author.setEmail(email);
+                              this.author.setRole(role);
+                              this.author.setImageProfile(profileImage);
 
-                          const singlePost = new Posts(
-                            item._id,
-                            item.publish,
-                            item.priority,
-                            item.authId,
-                            this.author,
-                            item.content,
-                            item.title,
-                            sendDate,
-                            videoEmbed,
-                            item.image
-                          );
-                          this.listPosts.push(singlePost);
-                        },
-                  error => {
+                              const singlePost = new Posts(
+                                item._id,
+                                item.publish,
+                                item.priority,
+                                item.authId,
+                                this.author,
+                                item.content,
+                                item.title,
+                                sendDate,
+                                videoEmbed,
+                                item.image
+                              );
+                              this.listPosts.push(singlePost);
+                            },
+                      error => {
 
-                    // if(error.status == 422){ //Author not exists
-                    //   this.authName = 'Anonymous'
-                    //   const singlePost = new Posts(
-                    //     item._id,
-                    //     item.publish,
-                    //     item.priority,
-                    //     item.authId,
-                    //     this.authName,
-                    //     item.content,
-                    //     item.title,
-                    //     sendDate,
-                    //     videoEmbed,
-                    //     item.Image
-                    //   );
-                    //   this.listPosts.push(singlePost);
-                    // }
-                  });
-        }
-      }
-    });
+                        // if(error.status == 422){ //Author not exists
+                        //   this.authName = 'Anonymous'
+                        //   const singlePost = new Posts(
+                        //     item._id,
+                        //     item.publish,
+                        //     item.priority,
+                        //     item.authId,
+                        //     this.authName,
+                        //     item.content,
+                        //     item.title,
+                        //     sendDate,
+                        //     videoEmbed,
+                        //     item.Image
+                        //   );
+                        //   this.listPosts.push(singlePost);
+                        // }
+                      });
+            }
+          }
+        });
 
 
   }

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-// import {Observable, ObservableInput} from 'rxjs';
-// import {catchError, tap, map} from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {LoginService} from './login/login.service';
 import {Observable, of} from 'rxjs';
 import {User} from './models/user.model';
 import {Posts} from './models/posts.model';
 import {Comments} from './models/comments.model';
+import {Message} from "./models/message";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ),
@@ -21,6 +20,7 @@ const apiUrl = 'https://student-portal-ajp.herokuapp.com/api';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
   constructor(
     private http: HttpClient,
@@ -38,6 +38,14 @@ export class ApiService {
   }
 
   /**
+   * Send get request to get all posts
+   */
+  getAllUser(): Observable<User[]> {
+    const url = `${apiUrl}/user/all`;
+    return this.http.get<User[]>(url);
+  }
+
+  /**
    * add user
    * @param user: User
    */
@@ -46,7 +54,6 @@ export class ApiService {
     const header = {
       headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ),
     };
-
     return this.http.post<User>(url, user, header );
   }
 
@@ -60,7 +67,6 @@ export class ApiService {
     const header = {
       headers: new HttpHeaders().set("Content-Type", "application/json").append('Authorization', this.loginService.getToken() ),
     };
-
     return this.http.put(url, user, header );
   }
 
@@ -81,11 +87,19 @@ export class ApiService {
     return this.http.get<Posts[]>(url);
   }
 
+  /**
+   * Get the comments associated to the post
+   * @param postId
+   */
   getCommentsFromPost(postId): Observable<Comments[]> {
     const url = `${apiUrl}/comments/${postId}`;
     return this.http.get<Comments[]>(url);
   }
 
+  /**
+   * Add a new Post
+   * @param posts
+   */
   addPosts(posts): Observable<Posts> {
     const url =   `${apiUrl}/post/new`;
     const header = {
@@ -95,6 +109,10 @@ export class ApiService {
     return this.http.post<Posts>(url, posts, header );
   }
 
+  /**
+   * Add a new comment
+   * @param comments
+   */
   addComments(comments): Observable<Comments> {
     const url =   `${apiUrl}/comment/new`;
     const header = {
@@ -112,6 +130,39 @@ export class ApiService {
     const url = `${apiUrl}/user/${userId}`;
     return this.http.get<User>(url);
   }
+
+  /**
+   * Get message
+   */
+  g
+  getMessage(receiverId): Observable<Message[]> {
+    const url = `${apiUrl}/message/${receiverId}`;
+    return this.http.get<Message[]>(url);
+  }
+
+  /**
+   * Add a new comment
+   * @param comments
+   */
+  addMessage(message, authorId ): Observable<Message> {
+    const url =   `${apiUrl}/message/${authorId}`;
+    console.log("message_url",url);
+    const header = {
+      headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'} ).append('Authorization', this.loginService.getToken() ),
+    };
+
+    return this.http.post<Message>(url, message, header );
+  }
+
+  readMessage(msgId, message) {
+    const url = `${apiUrl}/message/read/${msgId}`;
+    const header = {
+      headers: new HttpHeaders().set("Content-Type", "application/json").append('Authorization', this.loginService.getToken() ),
+    };
+    return this.http.put(url, message, header );
+  }
+
+
 }
 
 

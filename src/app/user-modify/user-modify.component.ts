@@ -49,12 +49,19 @@ export class UserModifyComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Get the user model data from the html form
+   * @param f
+   */
   modifyUser(f: NgForm) {
 
     compressImage(this.croppedImage, 100, 100).then(compressed => {
       this.croppedImage = compressed;
     });
 
+    /**
+     * Prepare the json constant for the user api PUT
+     */
     const USERJSON = {
         firstName: f.value.firstName,
         lastName: f.value.lastName,
@@ -84,6 +91,12 @@ export class UserModifyComponent implements OnInit {
 
 }
 
+/**
+ * Function used to compress the image passed from the form
+ * @param src
+ * @param newX
+ * @param newY
+ */
 function compressImage(src, newX, newY) {
   return new Promise((res, rej) => {
     const img = new Image();

@@ -23,6 +23,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ImageCropperModule} from "ngx-image-cropper";
 import {DatePipe} from '@angular/common';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     UserAddComponent,
     UserModifyComponent,
     UserDeleteComponent,
+    RightSidebarComponent,
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,
